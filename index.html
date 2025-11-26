@@ -82,20 +82,13 @@ async function verify() {
     const cert = data.find(c => c.id.toLowerCase() === id.toLowerCase());
 
     if (cert) {
-        resultBox.style.display = "block";
-        resultBox.innerHTML = `
-            <strong>Certificate Found ✔</strong><br><br>
-            <b>Name:</b> ${cert.name}<br>
-            <b>Course:</b> ${cert.course}<br>
-            <b>Hours:</b> ${cert.hours}<br>
-            <b>Issued By:</b> ${cert.issuedBy}<br>
-            <b>Date:</b> ${cert.date}<br>
-            <b>Credential ID:</b> ${cert.id}
-        `;
-    } else {
-        errorBox.style.display = "block";
-        errorBox.innerHTML = "❌ Invalid or Not Found.";
-    }
+    // Redirect to certificate page
+    window.location.href = `certificates/${cert.id}.html`;
+} else {
+    errorBox.style.display = "block";
+    errorBox.innerHTML = "❌ Invalid or Not Found.";
+}
+
 }
 </script>
 
